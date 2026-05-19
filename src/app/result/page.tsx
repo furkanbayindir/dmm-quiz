@@ -130,13 +130,16 @@ export default function ResultPage() {
           </button>
           <button
             onClick={() => router.push("/leaderboard")}
+            disabled={saving}
             className="w-full py-4 text-base font-semibold rounded-2xl transition-all duration-150 active:scale-95"
             style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: saving ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.06)",
+              border: `1px solid ${saving ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.1)"}`,
+              color: saving ? "rgba(255,255,255,0.25)" : "white",
+              cursor: saving ? "not-allowed" : "pointer",
             }}
           >
-            Liderlik Tablosunu Gör
+            {saving ? "Kaydediliyor..." : "Liderlik Tablosunu Gör"}
           </button>
           <button
             onClick={() => router.push("/")}

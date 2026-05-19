@@ -20,8 +20,8 @@ export async function addScore(name: string, score: number): Promise<void> {
 }
 
 export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
-  // Returns members sorted by score descending
-  const raw = await redis.zrange(LEADERBOARD_KEY, 0, count - 1, { rev: true });
+  // Fetch all members ascending, sort descending in JS to avoid rev:true REST quirks
+  const raw = await redis.zrange(LEADERBOARD_KEY, 0, -1);
 
   return (raw as string[])
     .map((member) => {
@@ -31,5 +31,7 @@ export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
         return null;
       }
     })
-    .filter((e): e is LeaderboardEntry => e !== null);
+    .filter((e): e is LeaderboardEntry => e !== null)
+    .sort((a, b) => b.score - a.score || b.timestamp - a.timestamp)
+    .slice(0, count);
 }
