@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useReducer, useCallback } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Timer from "@/components/Timer";
 import { getRandomQuestions, Question } from "@/lib/questions";
