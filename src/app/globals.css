@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap');
+
+:root {
+  --bg-deep: #07071a;
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --accent: #7c3aed;
+  --accent-light: #a78bfa;
+  --cyan: #06b6d4;
+  --correct: #10b981;
+  --wrong: #ef4444;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-deep);
+  font-family: 'Poppins', sans-serif;
+  color: white;
+  user-select: none;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+  }
+
+  .btn-primary {
+    @apply bg-violet-600 hover:bg-violet-500 active:bg-violet-700 text-white font-bold rounded-2xl transition-all duration-150 active:scale-95;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(124, 58, 237, 0.5);
+  border-radius: 2px;
+}
