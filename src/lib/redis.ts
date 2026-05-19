@@ -20,16 +20,18 @@ export async function addScore(name: string, score: number): Promise<void> {
 }
 
 export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
-  // Fetch all members ascending, sort descending in JS to avoid rev:true REST quirks
   const raw = await redis.zrange(LEADERBOARD_KEY, 0, -1);
 
-  return (raw as string[])
+  return (raw as unknown[])
     .map((member) => {
-      try {
-        return JSON.parse(member) as LeaderboardEntry;
-      } catch {
-        return null;
+      // Upstash REST client auto-deserializes JSON strings to objects
+      if (typeof member === "object" && member !== null) {
+        return member as LeaderboardEntry;
       }
+      if (typeof member === "string") {
+        try { return JSON.parse(member) as LeaderboardEntry; } catch { return null; }
+      }
+      return null;
     })
     .filter((e): e is LeaderboardEntry => e !== null)
     .sort((a, b) => b.score - a.score || b.timestamp - a.timestamp)
