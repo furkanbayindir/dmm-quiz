@@ -42,13 +42,15 @@ export default function RegisterPage() {
         </button>
 
         {/* Logo */}
-        <div className="mb-6 w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg">
+        <div className="relative mb-6 inline-flex items-center py-2">
+          <div className="absolute inset-0 rounded-xl pointer-events-none"
+            style={{ background: "radial-gradient(ellipse 100% 150% at center, rgba(255,255,255,0.12) 0%, transparent 100%)" }} />
           <Image
-            src="/cib-logo.png"
-            alt="İletişim Başkanlığı"
-            width={52}
-            height={52}
-            className="object-contain rounded-full"
+            src="/dmm-logo.png"
+            alt="DMM — Dezenformasyonla Mücadele Merkezi | İletişim Başkanlığı"
+            width={200}
+            height={32}
+            className="relative object-contain h-8 w-auto"
             priority
           />
         </div>

@@ -25,16 +25,19 @@ export default function WelcomePage() {
 
       <div className="relative z-10 flex flex-col items-center text-center px-8 max-w-3xl w-full">
         {/* Arma Logo */}
-        <div className="mb-5 w-28 h-28 rounded-full bg-white flex items-center justify-center shadow-2xl"
-          style={{ boxShadow: "0 0 40px rgba(124,58,237,0.3), 0 8px 32px rgba(0,0,0,0.4)" }}>
-          <Image
-            src="/cib-logo.png"
-            alt="Türkiye Cumhuriyeti Cumhurbaşkanlığı İletişim Başkanlığı"
-            width={96}
-            height={96}
-            className="object-contain rounded-full"
-            priority
-          />
+        <div className="relative mb-5 flex items-center justify-center">
+          <div className="absolute w-52 h-52 rounded-full pointer-events-none"
+            style={{ background: "radial-gradient(circle, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 50%, transparent 75%)" }} />
+          <div className="relative overflow-hidden rounded-full w-36 h-36">
+            <Image
+              src="/cib-logo.png"
+              alt="Türkiye Cumhuriyeti Cumhurbaşkanlığı İletişim Başkanlığı"
+              width={144}
+              height={144}
+              className="object-contain"
+              priority
+            />
+          </div>
         </div>
 
         {/* Badge */}
