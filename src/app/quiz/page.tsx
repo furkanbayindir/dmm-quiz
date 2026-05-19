@@ -167,24 +167,8 @@ export default function QuizPage() {
       className="relative flex flex-col min-h-screen overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 50% 0%, #1e0a4a 0%, #07071a 70%)" }}
     >
-      {/* Logo strip */}
-      <div className="flex justify-center pt-4 pb-1 px-8">
-        <div className="relative flex items-center px-4 py-2">
-          <div className="absolute inset-0 rounded-2xl pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 85% 100% at center, rgba(255,255,255,0.12) 0%, transparent 100%)" }} />
-          <Image
-            src="/dmm-logo.png"
-            alt="DMM — Dezenformasyonla Mücadele Merkezi | İletişim Başkanlığı"
-            width={220}
-            height={36}
-            className="relative object-contain h-9 w-auto"
-            priority
-          />
-        </div>
-      </div>
-
       {/* Header */}
-      <div className="flex items-center justify-between px-8 pt-4 pb-4">
+      <div className="flex items-center justify-between px-8 pt-6 pb-4">
         <div className="flex flex-col">
           <span className="text-white/40 text-xs font-semibold uppercase tracking-widest">
             Soru

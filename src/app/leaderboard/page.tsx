@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 interface Entry {
@@ -57,22 +56,6 @@ export default function LeaderboardPage() {
       />
 
       <div className="relative z-10 flex flex-col flex-1 px-8 py-8 max-w-3xl mx-auto w-full">
-        {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <div className="relative flex items-center px-4 py-2">
-            <div className="absolute inset-0 rounded-2xl pointer-events-none"
-              style={{ background: "radial-gradient(ellipse 85% 100% at center, rgba(255,255,255,0.12) 0%, transparent 100%)" }} />
-            <Image
-              src="/dmm-logo.png"
-              alt="DMM — Dezenformasyonla Mücadele Merkezi | İletişim Başkanlığı"
-              width={220}
-              height={36}
-              className="relative object-contain h-9 w-auto"
-              priority
-            />
-          </div>
-        </div>
-
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>

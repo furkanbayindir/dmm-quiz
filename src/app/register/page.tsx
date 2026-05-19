@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -40,20 +39,6 @@ export default function RegisterPage() {
         >
           ← Geri
         </button>
-
-        {/* Logo */}
-        <div className="relative mb-6 inline-flex items-center py-2">
-          <div className="absolute inset-0 rounded-xl pointer-events-none"
-            style={{ background: "radial-gradient(ellipse 100% 150% at center, rgba(255,255,255,0.12) 0%, transparent 100%)" }} />
-          <Image
-            src="/dmm-logo.png"
-            alt="DMM — Dezenformasyonla Mücadele Merkezi | İletişim Başkanlığı"
-            width={200}
-            height={32}
-            className="relative object-contain h-8 w-auto"
-            priority
-          />
-        </div>
 
         <h2 className="text-3xl font-black mb-2">Yarışmacı Bilgileri</h2>
         <p className="text-white/50 mb-8 text-sm">
