@@ -199,31 +199,31 @@ export default function QuizPage() {
       </div>
 
       {/* Question */}
-      <div className="flex-1 flex flex-col justify-between px-8 pt-8 pb-6 overflow-y-auto">
+      <div className="flex-1 flex flex-col justify-start gap-5 px-8 pt-6 pb-6 overflow-y-auto">
         <div
-          className="rounded-3xl p-8 mb-6"
+          className="rounded-3xl p-5"
           style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
         >
-          <p className="text-xl md:text-2xl font-bold leading-relaxed text-white">
+          <p className="text-lg md:text-xl font-bold leading-relaxed text-white">
             {question.text}
           </p>
         </div>
 
-        {/* Options */}
-        <div className="grid grid-cols-1 gap-4">
+        {/* Options — 2 columns for portrait screens */}
+        <div className="grid grid-cols-2 gap-3">
           {question.options.map((opt) => (
             <button
               key={opt.id}
               onClick={() => handleSelect(opt.id)}
               disabled={state.phase === "feedback"}
-              className="w-full px-6 py-5 rounded-2xl text-left font-semibold text-base md:text-lg transition-all duration-150 active:scale-95 flex items-center gap-4"
+              className="w-full px-3 py-5 rounded-2xl text-left font-semibold text-sm transition-all duration-150 active:scale-95 flex items-center gap-3"
               style={{
                 ...getOptionStyle(opt.id),
                 cursor: state.phase === "feedback" ? "default" : "pointer",
               }}
             >
               <span
-                className="flex-shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black"
+                className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center text-sm font-black"
                 style={{
                   background:
                     state.phase === "feedback" && opt.id === question.correctId

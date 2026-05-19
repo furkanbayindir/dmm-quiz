@@ -235,8 +235,12 @@ export const ALL_QUESTIONS: Question[] = [
 
 export function getRandomQuestions(count = 10): Question[] {
   const shuffled = [...ALL_QUESTIONS].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count).map((q) => ({
-    ...q,
-    options: [...q.options].sort(() => Math.random() - 0.5),
-  }));
+  const labels = ["a", "b", "c", "d"] as const;
+  return shuffled.slice(0, count).map((q) => {
+    const shuffledOptions = [...q.options].sort(() => Math.random() - 0.5);
+    // Re-label by position so A is always first, B second, etc.
+    const relabeled = shuffledOptions.map((opt, i) => ({ ...opt, id: labels[i] }));
+    const newCorrectId = labels[shuffledOptions.findIndex((opt) => opt.id === q.correctId)];
+    return { ...q, options: relabeled, correctId: newCorrectId };
+  });
 }
