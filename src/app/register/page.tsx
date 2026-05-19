@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
@@ -35,10 +36,22 @@ export default function RegisterPage() {
         {/* Back */}
         <button
           onClick={() => router.push("/")}
-          className="mb-8 text-white/40 hover:text-white/70 text-sm font-medium transition-colors flex items-center gap-2"
+          className="mb-6 text-white/40 hover:text-white/70 text-sm font-medium transition-colors flex items-center gap-2"
         >
           ← Geri
         </button>
+
+        {/* Logo */}
+        <div className="mb-6 w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-lg">
+          <Image
+            src="/cib-logo.png"
+            alt="İletişim Başkanlığı"
+            width={52}
+            height={52}
+            className="object-contain rounded-full"
+            priority
+          />
+        </div>
 
         <h2 className="text-3xl font-black mb-2">Yarışmacı Bilgileri</h2>
         <p className="text-white/50 mb-8 text-sm">

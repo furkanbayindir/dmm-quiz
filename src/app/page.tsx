@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 export default function WelcomePage() {
@@ -23,6 +24,19 @@ export default function WelcomePage() {
       />
 
       <div className="relative z-10 flex flex-col items-center text-center px-8 max-w-3xl w-full">
+        {/* Arma Logo */}
+        <div className="mb-5 w-28 h-28 rounded-full bg-white flex items-center justify-center shadow-2xl"
+          style={{ boxShadow: "0 0 40px rgba(124,58,237,0.3), 0 8px 32px rgba(0,0,0,0.4)" }}>
+          <Image
+            src="/cib-logo.png"
+            alt="Türkiye Cumhuriyeti Cumhurbaşkanlığı İletişim Başkanlığı"
+            width={96}
+            height={96}
+            className="object-contain rounded-full"
+            priority
+          />
+        </div>
+
         {/* Badge */}
         <div className="mb-6 px-5 py-2 rounded-full text-sm font-semibold tracking-widest uppercase"
           style={{ background: "rgba(124,58,237,0.2)", border: "1px solid rgba(124,58,237,0.5)", color: "#a78bfa" }}>

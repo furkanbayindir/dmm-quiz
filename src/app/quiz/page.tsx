@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useReducer, useCallback } from "react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Timer from "@/components/Timer";
 import { getRandomQuestions, Question } from "@/lib/questions";
@@ -166,8 +167,22 @@ export default function QuizPage() {
       className="relative flex flex-col min-h-screen overflow-hidden"
       style={{ background: "radial-gradient(ellipse at 50% 0%, #1e0a4a 0%, #07071a 70%)" }}
     >
+      {/* Logo strip */}
+      <div className="flex justify-center pt-4 pb-1 px-8">
+        <div className="bg-white rounded-2xl px-5 py-2 shadow-lg flex items-center">
+          <Image
+            src="/dmm-logo.png"
+            alt="DMM — Dezenformasyonla Mücadele Merkezi | İletişim Başkanlığı"
+            width={220}
+            height={36}
+            className="object-contain h-9 w-auto"
+            priority
+          />
+        </div>
+      </div>
+
       {/* Header */}
-      <div className="flex items-center justify-between px-8 pt-6 pb-4">
+      <div className="flex items-center justify-between px-8 pt-4 pb-4">
         <div className="flex flex-col">
           <span className="text-white/40 text-xs font-semibold uppercase tracking-widest">
             Soru
