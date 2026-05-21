@@ -19,7 +19,7 @@ export async function addScore(name: string, score: number): Promise<void> {
   await redis.zadd(LEADERBOARD_KEY, { score, member: JSON.stringify(entry) });
 }
 
-export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
+export async function getAllScores(): Promise<LeaderboardEntry[]> {
   const raw = await redis.zrange(LEADERBOARD_KEY, 0, -1);
 
   return (raw as unknown[])
@@ -34,6 +34,10 @@ export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
       return null;
     })
     .filter((e): e is LeaderboardEntry => e !== null)
-    .sort((a, b) => b.score - a.score || b.timestamp - a.timestamp)
-    .slice(0, count);
+    .sort((a, b) => b.score - a.score || a.timestamp - b.timestamp);
+}
+
+export async function getTopScores(count = 10): Promise<LeaderboardEntry[]> {
+  const all = await getAllScores();
+  return all.slice(0, count);
 }

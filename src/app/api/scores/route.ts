@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { addScore, getTopScores } from "@/lib/redis";
+import { addScore, getTopScores, getAllScores } from "@/lib/redis";
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const entries = await getTopScores(10);
+    const all = new URL(req.url).searchParams.has("all");
+    const entries = all ? await getAllScores() : await getTopScores(10);
     return NextResponse.json(entries);
   } catch (error) {
     console.error("GET /api/scores error:", error);
